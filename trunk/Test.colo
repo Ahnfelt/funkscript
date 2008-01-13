@@ -1,0 +1,66 @@
+# Funk - I Feel Good (pun on FUNCtional)
+
+# Possible syntax for list comprehensions:
+# (| pair x y | :x 1..10 :y 1..20 | isPrime(x + y) |)
+
+# Possible syntax for associative containers:
+# [|MyKey| MyValue |B| "bee" |C| 3 |D| "doctor"]
+
+# Remember Zip and Unzip for lists
+
+# ::(s, print) <- export
+# Math:(sin, cos, fac) <- import
+# Math:sin <- qualified
+
+:print {_ ToString Print}
+:s 'This is ''some kind'' of test'
+:fib {
+    |0| 1
+    |1| 1
+    |n| fib(n - 1) + fib(n - 2)
+}
+print s.Between(10, 15).Uppercase
+print 'Hello, '..s
+:l [7, 3, 5, 9, 8, 1, 2].Map{fib _}.Sort{|a b| a < b}
+print l
+print (l FoldLeft 0 {|sum e| sum + e})
+
+:point {|x y| {
+    |X| x
+    |Y| y
+    |Negate| point ~x ~y
+    |Add p| point(x + p.X, y + p.Y)
+    |ToString| '('..x..', '..y..')'
+}}
+:p1 point 10 20
+:p2 point 5 7
+print p1 + p2
+print ~p2
+
+:while {|c a|
+    :loop {|i| (c i) Then {a i; loop (i + 1)}}
+    loop 0
+}
+
+while {_ < 3} {
+    print "Iteration ".._
+}
+
+# Possible documentation format (seperate from source)
+# <m n="Funk">
+#   <f n="while">
+#     Repeats <i n="action" /> while the <i n="condition" /> holds true.
+#     <a n="condition">
+#       A function that returns true if the while loop is to 
+#       perform another iteration, or false if it is to stop.
+#       The function takes the current iteration (0, 1, ...)
+#       as it's only parameter.
+#     </a>
+#     <a n="action">
+#       A function that is called in each iteration.        
+#       The function takes the current iteration (0, 1, ...)
+#       as it's only parameter.
+#     </a>
+#   </f>
+# </m>
+
