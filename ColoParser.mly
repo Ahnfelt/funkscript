@@ -207,8 +207,8 @@ multi_apply
 { (EApply ($1, (EUnit, $2)), $2) }
 | multi_apply TCurlyA optional_semis lambda TCurlyR
 { (EApply ($1, ($4, $2)), $2) }
-| multi_apply TBracketA expression_cons TBracketR
-{ (EApply ($1, ($3, $2)), $2) }
+| multi_apply TBracketA expression_list TBracketR
+{ (EApply ($1, (EList $3, $2)), $2) }
 | multi_apply TDot atom
 { (EApply ($1, $3), $2) }
 | atom
@@ -220,8 +220,8 @@ atom
 { (EUnit, $1) }
 | TParenL expression TParenR
 { $2 }
-| TBracketL expression_cons TBracketR
-{ ($2, $1) }
+| TBracketL expression_list TBracketR
+{ (EList $2, $1) }
 | TCurlyL optional_semis lambda TCurlyR
 { ($3, $1) }
 | TCurlyL optional_semis lambda TCurlyR
@@ -242,22 +242,13 @@ atom
 { (EId "__", $1) }
 ;
 
-expression_cons
-: expression_list TDoubleColon expression
-{ EList ($1, Some $3) }
-| expression_list
-{ EList ($1, None) }
-| 
-{ EList ([], None) }
-;
-
 expression_list
 : expression TComma expression_list
 { $1::$3 }
-| expression TComma 
-{ [$1] }
 | expression
 { [$1] }
+| 
+{ [] }
 ;
 
 lambda
@@ -305,8 +296,10 @@ id_pattern
 non_id_pattern
 : TParenL TParenR
 { (PUnit, $1) }
-| TBracketL pattern_cons TBracketR
-{ ($2, $1) }
+| TBracketL pattern_list TBracketR
+{ (PList ($2, None), $1) }
+| TBracketL pattern_list TBracketR TConcat pattern
+{ (PList ($2, Some $5), $1) }
 | TString
 { (PString (snd $1), fst $1) }
 | TNumber
@@ -317,20 +310,13 @@ non_id_pattern
 { (PWildcard, $1) }
 ;
 
-pattern_cons
-: pattern_list TDoubleColon pattern
-{ PList ($1, Some $3) }
-| pattern_list
-{ PList ($1, None) }
-| 
-{ PList ([], None) }
-;
-
 pattern_list
 : pattern TComma pattern_list
 { $1::$3 }
 | pattern
 { [$1] }
+| 
+{ [] }
 ;
 
 %%
