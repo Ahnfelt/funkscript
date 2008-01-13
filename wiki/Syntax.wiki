@@ -1,11 +1,11 @@
 #summary Describes the syntax of Funk.
 #labels Special,Syntax
 
-= Literals =
+= Comments =
 
 Comments start with a hash `#` and lasts to the end of the line. They are ignored by the compiler.
 
-== Union ==
+= Union =
 
 The union value corresponds roughly to _null_ or _nil_ in other languages. It is useful if you have no other meaningful value to return (when your functions only purpose is to perform a side effect).
 
@@ -13,7 +13,7 @@ The union value corresponds roughly to _null_ or _nil_ in other languages. It is
 ()          # The union value
 }}}
 
-== Booleans ==
+= Booleans =
 
 Truth value literals matche the regular expression `[01][?]`.
 
@@ -22,7 +22,7 @@ Truth value literals matche the regular expression `[01][?]`.
 0?          # False
 }}}
 
-== Numbers ==
+= Numbers =
 
 A number literal matches `[0-9]+([.][0-9]+)([eE][-+]?[0-9]+)?` and has the obvious corresponding floating point value.
 {{{
@@ -31,7 +31,7 @@ A number literal matches `[0-9]+([.][0-9]+)([eE][-+]?[0-9]+)?` and has the obvio
 1.2e9       # 1.2 billion
 }}}
 
-== Strings ==
+= Strings =
 
 String literals match `["]([^"]|\\["])*["])` or `[']([^']|[']['])*['])`. Double quote strings can have escape sequences in them (a backslash followed by a code), while single quote strings interpret backslash as an ordinary character. Two single quotes after each other in a single quote string is interpreted as a literal single quote within the string. All strings are in Unicode. Additionally, identifiers that start with a uppercase letter are strings too.
 
@@ -42,7 +42,7 @@ String literals match `["]([^"]|\\["])*["])` or `[']([^']|[']['])*['])`. Double 
 MyFunString    # The last string: MyFunString
 }}}
 
-== !RegExes ==
+= !RegExes =
 
 Regular expressions (actually a superset) start with `~~` and ends with `~~`. In between the last two tildes (`~`) there can be modifier codes. The syntax of regular expressions inside have not been decided yet, but I'll look at Perl when designing them. Suggestions are welcomed.
 
@@ -55,7 +55,7 @@ Regular expressions (actually a superset) start with `~~` and ends with `~~`. In
 }
 }}}
 
-== Lists ==
+= Lists =
 
 List literals start with `[` and ends with `]`. Within them are expressions separated by commas, and an optional comma at the end. Automatic semicolons are suppressed if the list parenthesis are the innermost when breaking a line.
 
@@ -65,7 +65,7 @@ List literals start with `[` and ends with `]`. Within them are expressions sepa
 [A, B, ]       # Demonstrating the optional trailing comma.
 }}}
 
-== Dictionaries ==
+= Dictionaries =
 
 Associative container literals start with `[` and `]` like lists, but the keys are enclosed in vertical bars `| |`.
 
@@ -75,7 +75,7 @@ Associative container literals start with `[` and `]` like lists, but the keys a
 [|X| 15 |Y| 26]  # The dictionary where "X" maps to 15 and "Y" maps to 26.
 }}}
 
-== Patterns ==
+= Patterns =
 
 A pattern matches a set of values. All the literals discussed above can be matched using the same syntax as is used to construct them. The pattern that matches anything is written `_`. If the value is needed within the expression, an variable pattern can be used, which consists of a variable identifier. It matches any value and binds that value to the corresponding value. There is a special pattern for matching variable-length lists which is a list pattern followed by the concatenation operator `&` and a pattern that matches the rest of the list.
 
@@ -87,14 +87,14 @@ A pattern matches a set of values. All the literals discussed above can be match
                  # contains all elements but the first to `r`.
 }}}
 
-== Functions ==
+= Functions =
 
 Functions are enclosed in `{ }` (curly braces). A function contains any number of matching pairs of patterns and expressions, that are tried in the order they appear in the code. If an expression is empty, it's assumed that it is unit `()`. If there are no patterns, but only a single expression, the function's sole element is bound to the special variable `_` (underscore). If the curly brace is followed by `:@`, the function itself is bound to the special variable `@`. Multiple arguments are implemented with [http://en.wikipedia.org/wiki/Currying currying], but have a shorter notation that consists of putting multiple patterns next to each other within the vertical bars `| |`. Patterns matching the second, third, or any following argument must be simple: either a variable pattern or the wildcard pattern `_`.
 
 {{{
-{}               # The function that discards it's sole argument and returns `()` 
+{}               # The function that discards it's sole argument and returns ()
                  # without any side effects.
 {|p1 p2| r}      # The function that takes two arguments which is required to
-                 # match the `p1` and `p2` patterns respectively, and returns `r`.
+                 # match the p1 and p2 patterns respectively, and returns r.
 {:@ @}           # The function that returns itself when called.
 }}}
