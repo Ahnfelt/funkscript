@@ -1,0 +1,16 @@
+#summary This is the main index of the language and standard library documentation.
+
+= Special constructs =
+
+Things that have syntactic sugar in the language:
+ * !Number - floating point numbers (double precision)
+ * !String - text strings (Unicode)
+ * !List - indexed container (an immutable array)
+ * !Dictionary - associative container (also called a map)
+ * !Functions - lambda/anonymous functions (closures)
+ * !Variables
+ * !Modules
+
+= Modules =
+
+No modules yet.
