@@ -7,7 +7,7 @@ Things that have syntactic sugar in the language:
  * [Booleans] - truth values (either _true_ or _false_)
  * [Numbers] - floating point numbers (double precision)
  * [Strings] - text strings (Unicode)
- * [Regexen] - regular expressions (a superset)
+ * [Regexes] - regular expressions (actually a superset)
  * [Lists] - indexed containers (an immutable array)
  * [Dictionaries] - associative containers (also called a map)
  * [Functions] - lambda/anonymous functions (closures)
