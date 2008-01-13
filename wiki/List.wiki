@@ -4,7 +4,7 @@ An immutable list is a collection of elements where each element has an index. T
 = Syntax =
 
 {{{
-:l [2, 3, 4]         # Let l be a list of three numbers: 2, 3 and 4.
+:l [2, 3, 4]         # Let l be a list of three numbers: 2, 3 and 4
 print [0, 1 :: l]    # Inserting in front, prints [0, 1, 2, 3, 4]
 print l & [5, 6, 7]  # Appending, prints [2, 3, 4, 5, 6, 7]
 :f {
@@ -12,7 +12,7 @@ print l & [5, 6, 7]  # Appending, prints [2, 3, 4, 5, 6, 7]
     |[10]|           # Matches a list containing exactly one element: 10
     |[a, b :: r]|    # Matches a list that has at least two elements, which
                      # becomes bound to a and b, and binds the rest of the 
-                     # list to r.
+                     # list to r
 }
 }}}
 
@@ -24,6 +24,9 @@ print l & [5, 6, 7]  # Appending, prints [2, 3, 4, 5, 6, 7]
 || `Head` || Returns the first element of the list. ||
 || `Tail` || Returns all elements of the list, except the first element, in the same order. ||
 || `Concatenate other` || Returns a list where all the elements of this list is followed by all the elements of the `other` list. ||
-|| `Each action` || Calls `action` on each element in the list. ||
-|| `Map f` || Returns a list where each element has been passed through the `f` function. That is, `[f(list.Get(0)), f(list.Get(1)), ..., f(list.Get(list.Length - 1))]` ||
+|| `Each f` || Calls the `f` function on each element in the list. Equivalent to `(f(list.Get(0)); f(list.Get(1)); ...; f(list.Get(list.Length - 1)); ())`. ||
+|| `Map f` || Returns a list where each element has been passed through the `f` function. Equivalent to `[f(list.Get(0)), f(list.Get(1)), ..., f(list.Get(list.Length - 1))]`. ||
+|| `Filter p` || Returns a list only containing the elements for which the `p` function returns true. ||
+|| `FoldLeft s f` || Accumulates a list by calling `f` with the arguments `s` and the first element of the list, then calling `f` with the return value of the last call and the second element, then the return value and the third element, until there are no more elements in the list. Equivalent to `(f ... (f (f s list.Get(0)) list.Get(1)) ... list.Get(list.Length - 1))`. ||
+|| `FoldRight s f` || Same as `FoldLeft`, except it starts with the last element, then the second last element, etc. ||
 || `Reverse` || Returns a list with the same elements, but in reverse order. ||
