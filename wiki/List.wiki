@@ -18,7 +18,12 @@ print l & [5, 6, 7]  # Appending, prints [2, 3, 4, 5, 6, 7]
 
 = Methods =
 
+|| `ToString` || Returns a string representation of the list. ||
 || `Length` || Returns the number of elements in the list. ||
 || `Get index` || Returns the element at position `index`. ||
+|| `Head` || Returns the first element of the list. ||
+|| `Tail` || Returns all elements of the list, except the first element, in the same order. ||
+|| `Concatenate other` || Returns a list where all the elements of this list is followed by all the elements of the `other` list. ||
+|| `Each action` || Calls `action` on each element in the list. ||
+|| `Map f` || Returns a list where each element has been passed through the `f` function. That is, `[f(list.Get(0)), f(list.Get(1)), ..., f(list.Get(list.Length - 1))]` ||
 || `Reverse` || Returns a list with the same elements, but in reverse order. ||
-|| || ||
