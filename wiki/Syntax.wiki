@@ -1,0 +1,18 @@
+#summary Describes the syntax of Funk.
+
+= Literals =
+
+== Booleans ==
+
+Truth value literals matches the regular expression `[01][?]`, where `0?` is _false_ and `1?` is _true_.
+
+== Numbers ==
+
+A number literal matches `[0-9]+([.][0-9]+)([eE][-+]?[0-9]+)?` and has the obvious corresponding floating point value.
+{{{
+    20          # The number twenty
+    3.141592    # A bad approximation of pi
+    1.2e9       # 1.2 billion
+}}}
+
+== Strings ==
