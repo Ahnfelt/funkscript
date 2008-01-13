@@ -1,10 +1,24 @@
 #summary Describes the syntax of Funk.
+#labels Special,Syntax
 
 = Literals =
 
+== Union ==
+
+The union value corresponds roughly to _null_ or _nil_ in other languages. It is useful if you have no other meaningful value to return (when your functions only purpose is to perform a side effect).
+
+{{
+    ()          # The union value
+}}
+
 == Booleans ==
 
-Truth value literals matches the regular expression `[01][?]`, where `0?` is _false_ and `1?` is _true_.
+Truth value literals matche the regular expression `[01][?]`.
+
+{{{
+    1?          # True
+    0?          # False
+}}}
 
 == Numbers ==
 
@@ -16,3 +30,24 @@ A number literal matches `[0-9]+([.][0-9]+)([eE][-+]?[0-9]+)?` and has the obvio
 }}}
 
 == Strings ==
+
+String literals match `["]([^"]|\\["])*["])` or `[']([^']|[']['])*['])`. Double quote strings can have escape sequences in them (a backslash followed by a code), while single quote strings interpret backslash as an ordinary character. Two single quotes after each other in a single quote string is interpreted as a literal single quote within the string. All strings are in Unicode.
+
+{{{
+    "Hello, Funk"  # A text string: Hello, Funk
+    "\"Funky\""    # Another string: "Funky"
+    'It''s good'   # A third string: It's good
+}}}
+
+== RegExes ==
+
+Regular expressions (actually a superset) start with `~~` and ends with `~~`. In between the last two tildes (`~`) there can be modifier codes. The syntax of regular expressions inside have not been decided yet, but I'll look at Perl when designing them. Suggestions are welcomed.
+
+{{{
+    ~~[a-zA-Z]+~~  # Matches any sequence of English letters.
+    :f {
+        |~~f(o*\=s)bar~~| # Matches foooobar (any number of os) 
+                          # and binds the matched os to the s
+                          # variable.
+    }
+}}}
