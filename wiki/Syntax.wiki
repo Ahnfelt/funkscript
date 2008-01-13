@@ -10,7 +10,7 @@ Comments start with a hash `#` and lasts to the end of the line. They are ignore
 The union value corresponds roughly to _null_ or _nil_ in other languages. It is useful if you have no other meaningful value to return (when your functions only purpose is to perform a side effect).
 
 {{{
-    ()          # The union value
+()          # The union value
 }}}
 
 == Booleans ==
@@ -18,17 +18,17 @@ The union value corresponds roughly to _null_ or _nil_ in other languages. It is
 Truth value literals matche the regular expression `[01][?]`.
 
 {{{
-    1?          # True
-    0?          # False
+1?          # True
+0?          # False
 }}}
 
 == Numbers ==
 
 A number literal matches `[0-9]+([.][0-9]+)([eE][-+]?[0-9]+)?` and has the obvious corresponding floating point value.
 {{{
-    20          # The number twenty
-    3.141592    # A bad approximation of pi
-    1.2e9       # 1.2 billion
+20          # The number twenty
+3.141592    # A bad approximation of pi
+1.2e9       # 1.2 billion
 }}}
 
 == Strings ==
@@ -36,10 +36,10 @@ A number literal matches `[0-9]+([.][0-9]+)([eE][-+]?[0-9]+)?` and has the obvio
 String literals match `["]([^"]|\\["])*["])` or `[']([^']|[']['])*['])`. Double quote strings can have escape sequences in them (a backslash followed by a code), while single quote strings interpret backslash as an ordinary character. Two single quotes after each other in a single quote string is interpreted as a literal single quote within the string. All strings are in Unicode. Additionally, identifiers that start with a uppercase letter are strings too.
 
 {{{
-    "Hello, Funk"  # A text string: Hello, Funk
-    "\"Funky\""    # Another string: "Funky"
-    'It''s good'   # A third string: It's good
-    MyFunString    # The last string: MyFunString
+"Hello, Funk"  # A text string: Hello, Funk
+"\"Funky\""    # Another string: "Funky"
+'It''s good'   # A third string: It's good
+MyFunString    # The last string: MyFunString
 }}}
 
 == !RegExes ==
@@ -47,12 +47,12 @@ String literals match `["]([^"]|\\["])*["])` or `[']([^']|[']['])*['])`. Double 
 Regular expressions (actually a superset) start with `~~` and ends with `~~`. In between the last two tildes (`~`) there can be modifier codes. The syntax of regular expressions inside have not been decided yet, but I'll look at Perl when designing them. Suggestions are welcomed.
 
 {{{
-    ~~[a-zA-Z]+~~  # Matches any sequence of English letters.
-    :f {
-        |~~f(o*\=s)bar~~| # Matches foooobar (any number of os) 
-                          # and binds the matched os to the s
-                          # variable.
-    }
+~~[a-zA-Z]+~~  # Matches any sequence of English letters.
+:f {
+    |~~f(o*\=s)bar~~| # Matches foooobar (any number of os) 
+                      # and binds the matched os to the s
+                      # variable.
+}
 }}}
 
 == Lists ==
@@ -60,9 +60,9 @@ Regular expressions (actually a superset) start with `~~` and ends with `~~`. In
 List literals start with `[` and ends with `]`. Within them are expressions separated by commas, and an optional comma at the end. Automatic semicolons are suppressed if the list parenthesis are the innermost when breaking a line.
 
 {{{
-    []             # The empty list
-    [1, 2, 3, 4]   # A list of four numbers: 1 2 3 4
-    [A, B, ]       # Demonstrating the optional trailing comma.
+[]             # The empty list
+[1, 2, 3, 4]   # A list of four numbers: 1 2 3 4
+[A, B, ]       # Demonstrating the optional trailing comma.
 }}}
 
 == Dictionaries ==
@@ -70,7 +70,7 @@ List literals start with `[` and ends with `]`. Within them are expressions sepa
 Associative container literals start with `[` and `]` like lists, but the keys are enclosed in vertical bars `| |`.
 
 {{{
-    [|]              # The empty dictionary (notice the bar that separates it
-                     # from an empty list).
-    [|X| 15 |Y| 26]  # The dictionary where "X" maps to 15 and "Y" maps to 26.
+[|]              # The empty dictionary (notice the bar that separates it
+                 # from an empty list).
+[|X| 15 |Y| 26]  # The dictionary where "X" maps to 15 and "Y" maps to 26.
 }}}
