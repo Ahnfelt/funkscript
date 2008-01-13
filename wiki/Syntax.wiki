@@ -129,3 +129,44 @@ To support mutual recursion, any sequence of variable declarations in the form `
     |n| even(n - 1) 
 }
 }}}
+
+= Updating variables =
+
+Since variables are mutable, you can replace their value with something else. This is done the same way as declaring variables, except `!` (exclamation mark) instead of `:` (colon). Variable patterns will update the corresponding variables with the variables it matches instead of introducing new variables.
+
+{{{
+:x 10      # Let x be the number 10
+!x 20      # Set x to the number 20
+!x x + 1   # Increase x by one
+}}}
+
+Increasing and decreasing variables can be tedious, since you have to repeat the variable name. Special syntax is available for this, when it comes to the operators `+`, `-`, `*`, `/`, `&` and `..`.
+
+{{{
+!x +       # Increase x by one
+!x + 3     # Increase x by 3
+!x - n     # Decrease x by n
+}}}
+
+= Sequences =
+
+A sequence consists of two expressions separated by a `;` (semicolon). The first expression is evaluated, and the result is discarded. Then the second expression is evaluated, and the result of it is the result of the sequence. Optionally, you can put a `;` after an expression without having an expression following it - in that case the semicolon will be ignored.
+
+{{{
+print "First do this"; 
+print "Then do this";
+}}}
+
+Since semicolons most of the time occurs at the end of the line, the compiler tries to guess where you wanted them. It simply inserts a semicolon at the end of each line, unless the innermost enclosing parenthesis are `( )` or `[ ]`. If you prefer to write all semicolons yourself, you can use the `-- ManualSemicolons` directive on a line by itself in the code to turn it off.
+
+{{{
+:l [This, List,
+    Spans, Multiple,
+    Lines]
+print "This expression is evaluated next"
+:f {
+    :some "function"
+    "with a sequence of expressions"
+}
+l     # And l is the result of the sequence.
+}}}
