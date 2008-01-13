@@ -4,7 +4,7 @@
 = Special constructs =
 
 Things that have syntactic sugar in the language:
- * [Booleans] - floating point numbers (double precision)
+ * [Booleans] - truth values (either _true_ or _false_)
  * [Numbers] - floating point numbers (double precision)
  * [Strings] - text strings (Unicode)
  * [Lists] - indexed containers (an immutable array)
