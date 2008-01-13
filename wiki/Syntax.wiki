@@ -89,12 +89,12 @@ A pattern matches a set of values. All the literals discussed above can be match
 
 == Functions ==
 
-Functions are enclosed in `{ }` (curly braces). A function contains any number of matching pairs of patterns and expressions, that are tried in the order they appear in the code. If an expression is empty, it's assumed that it is unit `()`. If there are no patterns, but only a single expression, the function's sole element is bound to the special variable `_` (underscore). If the curly brace is followed by `:@`, the function itself is bound to the special variable `@`. Multiple arguments are implemented with [http://en.wikipedia.org/wiki/Currying currying], but have a shorter notation that consists of putting multiple patterns next to each other within the vertical bars `| |`.
+Functions are enclosed in `{ }` (curly braces). A function contains any number of matching pairs of patterns and expressions, that are tried in the order they appear in the code. If an expression is empty, it's assumed that it is unit `()`. If there are no patterns, but only a single expression, the function's sole element is bound to the special variable `_` (underscore). If the curly brace is followed by `:@`, the function itself is bound to the special variable `@`. Multiple arguments are implemented with [http://en.wikipedia.org/wiki/Currying currying], but have a shorter notation that consists of putting multiple patterns next to each other within the vertical bars `| |`. Patterns matching the second, third, or any following argument must be simple: either a variable pattern or the wildcard pattern `_`.
 
 {{{
-{}               # The function that discards it's sole argument and returns
-                 # `()` without any side effects.
-{|p1| r}         # The function that takes an argument which is required to
-                 # match the `p1` pattern and returns `r`.
+{}               # The function that discards it's sole argument and returns `()` 
+                 # without any side effects.
+{|p1 p2| r}      # The function that takes two arguments which is required to
+                 # match the `p1` and `p2` patterns respectively, and returns `r`.
 {:@ @}           # The function that returns itself when called.
 }}}
