@@ -46,21 +46,6 @@ while {_ < 3} {
     print "Iteration ".._
 }
 
-# Possible documentation format (seperate from source)
-# <m n="Funk">
-#   <f n="while">
-#     Repeats <i n="action" /> while the <i n="condition" /> holds true.
-#     <a n="condition">
-#       A function that returns true if the while loop is to 
-#       perform another iteration, or false if it is to stop.
-#       The function takes the current iteration (0, 1, ...)
-#       as it's only parameter.
-#     </a>
-#     <a n="action">
-#       A function that is called in each iteration.        
-#       The function takes the current iteration (0, 1, ...)
-#       as it's only parameter.
-#     </a>
-#   </f>
-# </m>
+:[1, 2]&r [1, 2, 3, 4, 5]
+print r
 

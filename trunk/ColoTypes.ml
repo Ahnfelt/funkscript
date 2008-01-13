@@ -18,7 +18,7 @@ type expression
     | EBool of bool
     | ENumber of float
     | EString of string
-    | EList of expression pos list * expression pos option
+    | EList of expression pos list
     | ELambda of (pattern pos * expression pos) list * bool
     | ESequence of expression pos * expression pos
     | EApply of expression pos * expression pos

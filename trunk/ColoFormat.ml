@@ -18,6 +18,7 @@ let rec format_pattern pattern = match fst pattern with
     | PNumber n -> format_float n
     | PBool b -> if b then "true" else "false"
     | PId i -> i
+    | PWildcard -> "_"
     | PUnit -> "()";;
 
 let rec format_match (p, e) = "|" ^ format_pattern p ^ "| " ^ format_expression e
@@ -26,8 +27,7 @@ and format_expression expression = match fst expression with
     | ELet (p, e) -> ":" ^ format_pattern p ^ " " ^ format_expression e
     | ESet (p, e) -> "!" ^ format_pattern p ^ " " ^ format_expression e
     | ESequence (l, r) -> format_expression l ^ ";\n" ^ format_expression r
-    | EList (l, Some r) -> "[" ^ separate ", " (List.map format_expression l) ^ " :: " ^ format_expression r ^ "]"
-    | EList (l, None) -> "[" ^ separate ", " (List.map format_expression l) ^ "]"
+    | EList l -> "[" ^ separate ", " (List.map format_expression l) ^ "]"
     | ELambda (m, _) -> "{" ^ separate "\n" (List.map format_match m) ^ "}"
     | EString s -> "\"" ^ s ^ "\""
     | ENumber n -> format_float n

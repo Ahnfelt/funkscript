@@ -8,6 +8,7 @@
 *)
 
 open ColoTypes;;
+open ExtLib;;
 
 exception UpdatePatternTooComplex;;
 
@@ -20,7 +21,8 @@ let rec format_pattern pattern = match fst pattern with
     | PList (l, Some r) ->
         let (lss, lvs) = List.split (List.map format_pattern l) in 
         let (rs, rv) = format_pattern r in
-        ("(VList (" ^ separate " :: " lss ^ (if l <> [] then " :: " else "") ^ rs ^ ")", rv @ List.flatten lvs)
+        ("(VList (" ^ separate " :: " lss ^ (if l <> [] then " :: " else "") ^ rs ^ "))", 
+        rv @ ["*" ^ rs] @ List.flatten lvs) (* FIXME: rs is added twice *)
     | PList (l, None) -> 
         let (lss, lvs) = List.split (List.map format_pattern l) in 
         ("(VList (" ^ separate " :: " lss ^ (if l <> [] then " :: " else "") ^ "[]))", List.flatten lvs)
@@ -31,8 +33,11 @@ let rec format_pattern pattern = match fst pattern with
     | PWildcard -> ("_", [])
     | PUnit -> ("VUnit", []);;
 
-let rec format_vars l b m a = match l with
-    | v::r -> b ^ "v_" ^ v ^ m ^ "c_" ^ v ^ a ^ format_vars r b m a
+let rec format_vars l b m a = 
+    let s v t e = if String.starts_with v "*c_" then t else e in
+    match l with
+    | v::r -> let sv = s v (String.slice ~first: 3 v) v in
+        b ^ "v_" ^ sv ^ m ^ "(" ^ s v "VList " "" ^ "c_" ^ sv ^ ")" ^ a ^ format_vars r b m a
     | [] -> "";;
 
 let rec format_match (p, e) = 
@@ -58,9 +63,7 @@ and format_expression expression_pos = match fst expression_pos with
     | ESet ((PId i, _), e) -> "v_" ^ i ^ " := " ^ format_expression e ^ "; VUnit "
     | ESet (p, e) -> let (s, v) = format_pattern p in 
         "let " ^ s ^ " = " ^ format_expression e ^ " in " ^ format_vars v "" " := " "; " ^ "VUnit"
-    | EList (l, Some r) -> "(VList ((" ^ separate " :: " (List.map format_expression l) ^ 
-        " :: []) @ value_to_list (" ^ format_expression r ^ ")))"
-    | EList (l, None) -> "(VList (" ^ separate " :: " (List.map format_expression l) ^ " :: []))"
+    | EList l -> "(VList [" ^ separate "; " (List.map format_expression l) ^ "])"
     | ELambda (m, o) -> "(" ^ (if o then "let rec v___ = ref " else "") ^ "(VFunction (fun p -> " ^ 
         (if m = [] then " VUnit" else "match p with\n" ^ separate "\n" (List.map format_match m)) ^ 
         (if o then ")) in !v___)" else ")))")
