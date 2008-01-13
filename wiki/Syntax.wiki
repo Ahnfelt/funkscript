@@ -70,7 +70,31 @@ List literals start with `[` and ends with `]`. Within them are expressions sepa
 Associative container literals start with `[` and `]` like lists, but the keys are enclosed in vertical bars `| |`.
 
 {{{
-[|]              # The empty dictionary (notice the bar that separates it
-                 # from an empty list).
+[|]              # The empty dictionary (notice the bar that distinguishes
+                 # it from an empty list).
 [|X| 15 |Y| 26]  # The dictionary where "X" maps to 15 and "Y" maps to 26.
+}}}
+
+== Patterns ==
+
+A pattern matches a set of values. All the literals discussed above can be matched using the same syntax as is used to construct them. The pattern that matches anything is written `_`. If the value is needed within the expression, an variable pattern can be used, which consists of a variable identifier. It matches any value and binds that value to the corresponding value. There is a special pattern for matching variable-length lists which is a list pattern followed by the concatenation operator `&` and a pattern that matches the rest of the list.
+
+{{{
+12               # A pattern that matches the number 12
+[A, B, C]        # Matches the list of the three stings "A" "B" "C"
+[a, _]           # Matches any list with two elements and binds the first element to a
+[_] & r          # Matches any list with at least one element, and binds a list that
+                 # contains all elements but the first to `r`.
+}}}
+
+== Functions ==
+
+Functions are enclosed in `{ }` (curly braces). A function contains any number of matching pairs of patterns and expressions, that are tried in the order they appear in the code. If an expression is empty, it's assumed that it is unit `()`. If there are no patterns, but only a single expression, the function's sole element is bound to the special variable `_` (underscore). If the curly brace is followed by `:@`, the function itself is bound to the special variable `@`. Multiple arguments are implemented with [http://en.wikipedia.org/wiki/Currying currying], but have a shorter notation that consists of putting multiple patterns next to each other within the vertical bars `| |`.
+
+{{{
+{}               # The function that discards it's sole argument and returns
+                 # `()` without any side effects.
+{|p1| r}         # The function that takes an argument which is required to
+                 # match the `p1` pattern and returns `r`.
+{:@ @}           # The function that returns itself when called.
 }}}
