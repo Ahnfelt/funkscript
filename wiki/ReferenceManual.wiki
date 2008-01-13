@@ -3,13 +3,13 @@
 = Special constructs =
 
 Things that have syntactic sugar in the language:
- * !Number - floating point numbers (double precision)
- * !String - text strings (Unicode)
- * !List - indexed container (an immutable array)
- * !Dictionary - associative container (also called a map)
- * !Functions - lambda/anonymous functions (closures)
- * !Variables
- * !Modules
+ * [Numbers] - floating point numbers (double precision)
+ * [Strings] - text strings (Unicode)
+ * [Lists] - indexed containers (an immutable array)
+ * [Dictionaries] - associative containers (also called a map)
+ * [Functions] - lambda/anonymous functions (closures)
+ * [Variables]
+ * [Modules]
 
 = Modules =
 
