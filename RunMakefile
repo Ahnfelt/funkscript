@@ -1,0 +1,12 @@
+PACKS = extlib
+SOURCES = ColoOcamlInclude.ml Test.ml
+RESULT = test
+MAKEFILE = OCamlMakefile
+
+all: native-code
+
+run: all
+	./$(RESULT)
+
+include $(MAKEFILE)
+
