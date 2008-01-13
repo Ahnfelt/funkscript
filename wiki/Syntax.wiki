@@ -98,3 +98,34 @@ Functions are enclosed in `{ }` (curly braces). A function contains any number o
                  # match the p1 and p2 patterns respectively, and returns r.
 {:@ @}           # The function that returns itself when called.
 }}}
+
+= Variables =
+
+Variables are mutable (non-constant) and are named by an identifier matching `[a-z][a-zA-Z0-9]*`. They have lexical scoping and you can modify a variable from an outer scope within an inner scope.
+
+{{{
+x                # A variable called x
+myLongVariable   # A variable called myLongVariable
+}}}
+
+= Variable declaration =
+
+You declare a variable by using the _let_ expression that starts with a `:` (colon), then a pattern and then an expression (followed by a `;` (semicolon) and the expression in which it's visible). The pattern can be a variable pattern, or have such patterns nested in it - these are the variables that will be declared (and initialized to what they match).
+
+{{{
+:x 23            # Let x be the number 23
+:[a, b] [5, 7]   # Let a be 5 and b be 7
+}}}
+
+To support mutual recursion, any sequence of variable declarations in the form `:v f` where v is an arbitrary variable name and f is any function literal, can use each other and themselves in the declaration of the function.
+
+{{{
+:even {
+    |0| 1?
+    |n| odd(n - 1) 
+}
+:odd {
+    |0| 0?
+    |n| even(n - 1) 
+}
+}}}
