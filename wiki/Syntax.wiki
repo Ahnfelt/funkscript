@@ -7,9 +7,9 @@
 
 The union value corresponds roughly to _null_ or _nil_ in other languages. It is useful if you have no other meaningful value to return (when your functions only purpose is to perform a side effect).
 
-{{
+{{{
     ()          # The union value
-}}
+}}}
 
 == Booleans ==
 
