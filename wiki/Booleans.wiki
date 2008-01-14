@@ -1,8 +1,8 @@
-#summary A boolean value.
+#summary Truth values.
 
 = Methods =
 
-|| `ToString` || Returns a string representation of the list (`"true"` or `"false"`). ||
+|| `ToString` || Returns a string representation (`"true"` or `"false"`). ||
 || `Then t` || Calls `t` if the boolean is true and returns it's value, or `()` if the boolean is false. ||
 || `Else e` || Calls `e` if the boolean is false and returns it's value, or `()` if the boolean is true. ||
 || `ThenElse t e` || Calls `t` if the boolean is true, or `e` if it's false. The result of the called function is returned. ||
