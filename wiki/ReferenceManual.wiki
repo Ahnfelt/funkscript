@@ -1,19 +1,18 @@
 #summary This is the main index of the language and standard library documentation.
 #labels Reference-Manual,Featured
 
-= Special constructs =
+Check out the [Syntax] of *Funk* first.
 
-Things that have syntactic sugar in the language:
+= Methods of built-in types =
+
+ * [Unit] - also known as _null_ (or _nil_)
  * [Booleans] - truth values (either _true_ or _false_)
  * [Numbers] - floating point numbers (double precision)
  * [Strings] - text strings (Unicode)
- * [Regexes] - regular expressions (actually a superset)
+ * [RegExes] - regular expressions (actually a superset)
  * [Lists] - indexed containers (an immutable array)
  * [Dictionaries] - associative containers (also called a map)
- * [Functions] - lambda/anonymous functions (closures)
- * [Variables]
- * [Modules]
 
-= Modules =
+= Standard library modules =
 
 No modules yet.
