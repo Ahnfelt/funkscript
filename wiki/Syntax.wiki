@@ -186,12 +186,14 @@ Operators are syntactic sugar for method calls. The following table lists the op
 || 3 || `a <= b` || || `a LessEqual b` ||
 || 3 || `a > b` || || `a Greater b` ||
 || 3 || `a >= b` || || `a GreaterEqual b` ||
-|| 4 || `a + b` || || `a Add b` ||
-|| 4 || `a - b` || || `a Subtract b` ||
-|| 5 || `a * b` || || `a Multiply b` ||
-|| 5 || `a / b` || || `a Divide b` ||
-|| 6 || `a ^ b` || || `a Power b` ||
+|| 4 || `a & b` || || `a Concatenate b` ||
+|| 4 || `a..b` || || `(a ToString) Concatenate (b ToString)` ||
+|| 5 || `a + b` || || `a Add b` ||
+|| 5 || `a - b` || || `a Subtract b` ||
+|| 6 || `a * b` || || `a Multiply b` ||
+|| 6 || `a / b` || || `a Divide b` ||
 || 7 || `~a` || || `a Negate` ||
-|| 8 || `a . b` || a(b) || `a b` ||
+|| 8 || `a ^ b` || || `a Power b` ||
+|| 9 || `a . b` || a(b) || `a b` ||
 
 The `Or` operator is the double vertical bar `||`, but cannot appear within a table in this Wiki.
