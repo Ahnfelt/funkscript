@@ -16,6 +16,6 @@
 || `From l n` || Returns a sub string of length `n` starting at character `l`. ||
 || `Less other` || Returns true if this string comes before the `other` string lexicographically. ||
 || `Greater other` || Returns true if this string comes after the `other` string lexicographically. ||
-|| `LessEqual other` || Returns true if this string doesn't after the `other` string lexicographically. ||
+|| `LessEqual other` || Returns true if this string doesn't come after the `other` string lexicographically. ||
 || `GreaterEqual other` || Returns true if this string doesn't come before the `other` string lexicographically. ||
 || `Equal other` || Returns true if the `other` string represents the same sequence of characters. ||
