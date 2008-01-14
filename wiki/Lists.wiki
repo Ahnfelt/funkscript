@@ -1,4 +1,4 @@
-#summary An immutable list is a collection of elements where each element has an index. There is special syntactic sugar and pattern matching available for it (see the [Syntax] page).
+#summary An immutable list is a collection of elements where each element has an index.
 #labels Immutable,Container,Featured,Special
 
 = Methods =
