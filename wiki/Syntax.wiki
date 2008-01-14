@@ -108,7 +108,7 @@ x                # A variable called x
 myLongVariable   # A variable called myLongVariable
 }}}
 
-= Variable declaration =
+== Declaration ==
 
 You declare a variable by using the _let_ expression that starts with a `:` (colon), then a pattern and then an expression (followed by a `;` (semicolon) and the expression in which it's visible). The pattern can be a variable pattern, or have such patterns nested in it - these are the variables that will be declared (and initialized to what they match).
 
@@ -130,7 +130,7 @@ To support mutual recursion, any sequence of variable declarations in the form `
 }
 }}}
 
-= Updating variables =
+== Updates ==
 
 Since variables are mutable, you can replace their value with something else. This is done the same way as declaring variables, except `!` (exclamation mark) instead of `:` (colon). Variable patterns will update the corresponding variables with the variables it matches instead of introducing new variables.
 
