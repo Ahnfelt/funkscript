@@ -1,5 +1,5 @@
 #summary Describes the syntax of Funk.
-#labels Special,Syntax,Featured
+#labels Featured
 
 = Comments =
 
