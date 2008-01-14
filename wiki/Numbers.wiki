@@ -27,3 +27,4 @@
 || `Greater other` || Returns true if this number is greater than the `other` number. ||
 || `LessEqual other` || Returns true if this number is less than or equal to the `other` number. ||
 || `GreaterEqual other` || Returns true if this number is greater than or equal to the `other` number. ||
+|| `Equal other` || Returns true if this number is equal to the `other` number. ||
