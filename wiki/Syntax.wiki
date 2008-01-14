@@ -46,9 +46,9 @@ MyFunString    # The last string: MyFunString
 Regular expressions (actually a superset) start and ends with a ` (backquote). The syntax of regular expressions inside have not been decided yet, but I'll look at Perl when designing them. Suggestions are welcomed.
 
 {{{
-~~[a-zA-Z]+~~  # Matches any sequence of English letters.
+`[a-zA-Z]+`  # Matches any sequence of English letters.
 :f {
-    |~~f(o*\=s)bar~~| # Matches foooobar (any number of os) 
+    |`f(o*\=s)bar`| # Matches foooobar (any number of os) 
                       # and binds the matched os to the s
                       # variable.
 }
