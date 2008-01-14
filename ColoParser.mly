@@ -30,8 +30,8 @@ let patterns l e = match l with
 %token <ColoTypes.position * float> TNumber
 %token <ColoTypes.position * string> TId TString TMember
 %token <ColoTypes.position * bool> TSemi TBool
-%token <ColoTypes.position> TThis TWildcard
-%token <ColoTypes.position> TDot TComma TColon TDoubleColon TPipe TSet TLeft TRight
+%token <ColoTypes.position> TSetThis TThis TWildcard
+%token <ColoTypes.position> TDot TComma TColon TPipe TSet
 %token <ColoTypes.position> TParenA TCurlyA TBracketA
 %token <ColoTypes.position> TParenL TParenR TCurlyL TCurlyR TBracketL TBracketR
 %token <ColoTypes.position> TNegate TAdd TSub TMult TDiv TPow TOr TAnd TConcat TStringConcat 
@@ -48,45 +48,14 @@ let patterns l e = match l with
 
 %type <ColoTypes.program> program
 %type <ColoTypes.expression pos> expression assignment apply atom
-%type <string * string list> port
-%type <(string * string list) pos list> exports imports
-%type <string list> lower_list
 
 %start program
 
 %%
 
 program
-: optional_semis exports imports expression TEof
-{ ($2, $3, $4) }
-;
-
-exports
-: TLess TSub port exports
-{ ($3, $1)::$4 }
-|
-{ [] }
-;
-
-imports
-: TRight port imports
-{ ($2, $1)::$3 }
-|
-{ [] }
-;
-
-port
-: TString TBracketL lower_list TBracketR optional_semis
-{ (snd $1, $3) }
-| TString TBracketL TBracketR optional_semis
-{ (snd $1, []) }
-;
-
-lower_list
-: TId TComma lower_list
-{ (snd $1)::$3 }
-| TId
-{ [snd $1] }
+: optional_semis expression TEof
+{ ([], [], $2) }
 ;
 
 optional_semis
@@ -202,9 +171,8 @@ arithmetics
 
 multi_apply
 : multi_apply TParenA expression_list TParenR
-{ List.fold_left (fun a sum -> (EApply (a, sum), $2)) $1 $3 }
-| multi_apply TParenA TParenR
-{ (EApply ($1, (EUnit, $2)), $2) }
+{ if $3 = [] then (EApply ($1, (EUnit, $2)), $2) 
+    else List.fold_left (fun a sum -> (EApply (a, sum), $2)) $1 $3 }
 | multi_apply TCurlyA optional_semis lambda TCurlyR
 { (EApply ($1, ($4, $2)), $2) }
 | multi_apply TBracketA expression_list TBracketR
@@ -222,8 +190,6 @@ atom
 { $2 }
 | TBracketL expression_list TBracketR
 { (EList $2, $1) }
-| TCurlyL optional_semis lambda TCurlyR
-{ ($3, $1) }
 | TCurlyL optional_semis lambda TCurlyR
 { ($3, $1) }
 | TNumber
@@ -259,7 +225,7 @@ lambda
 ;
 
 set_this
-: TColon TThis optional_semis
+: TSetThis optional_semis
 { true }
 | 
 { false }

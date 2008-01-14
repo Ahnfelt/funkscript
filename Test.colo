@@ -21,7 +21,7 @@
 }
 print s.Between(10, 15).Uppercase
 print 'Hello, '..s
-:l [7, 3, 5, 9, 8, 1, 2].Map{fib _}.Sort{|a b| a < b}
+:l [7, 3, 5, 9, 8, 1, 2] Map {fib _} Sort {|a b| a < b}
 print l
 print (l FoldLeft 0 {|sum e| sum + e})
 
@@ -46,6 +46,4 @@ while {_ < 3} {
     print "Iteration ".._
 }
 
-:[1, 2]&r [1, 2, 3, 4, 5]
-print r
 

@@ -48,15 +48,14 @@ rule lexer = parse
   | ['a'-'z'] ['a'-'z' 'A'-'Z' '0'-'9']* {a lexbuf; TId (p lexbuf, Lexing.lexeme lexbuf)}
   | '@' ['A'-'Z'] ['a'-'z' 'A'-'Z' '0'-'9']* {a lexbuf; TMember (p lexbuf, String.lchop (Lexing.lexeme lexbuf))}
   | '@' {a lexbuf; TThis (p lexbuf)}
+  | ":@" {a lexbuf; TSetThis (p lexbuf)}
   | '_' {a lexbuf; TWildcard (p lexbuf)}
-  | "::" {TDoubleColon (p lexbuf)}
   | ':' {TColon (p lexbuf)}
   | ';' {TSemi (p lexbuf, false)}
   | ',' {TComma (p lexbuf)}
   | '.' {TDot (p lexbuf)}
   | '|' {TPipe (p lexbuf)}
   | '!' {TSet (p lexbuf)}
-  | "->" {TRight (p lexbuf)}
   | '{' {brace '{'; let pos = (p lexbuf) in if apply_position pos then TCurlyA pos else TCurlyL pos}
   | '}' {brace '}'; a lexbuf; TCurlyR (p lexbuf)}
   | '[' {brace '['; let pos = (p lexbuf) in if apply_position pos then TBracketA pos else TBracketL pos}
