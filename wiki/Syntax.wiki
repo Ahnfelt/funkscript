@@ -175,7 +175,7 @@ Note that with automatic semicolons, any expression that spans multiple lines sh
 
 = Operators =
 
-Operators are syntactic sugar for method calls. The following table lists the operators and the method calls they correspond to. Operators with higher precedence are towards the bottom of the table. All of them associate to the left or are non-associative (equality and power).
+Operators are syntactic sugar for method calls. The following table lists the operators and the method calls they correspond to. Operators with higher precedence are towards the bottom of the table. All of them associate to the left, except precedences 3, 7 and 8, which or are non-associative.
 
 || 1 || `a b` || || `a b` (call `a` with the argument `b`) ||
 || 2 || `a && b` || || `a And {b}` ||
