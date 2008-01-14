@@ -214,7 +214,7 @@ Variables that have been exported from other modules can be used by qualifying t
 
 == Exporting ==
 
-Variables that are declared at top level in a file can be exported. This enables other modules to import them. The export clause must appear before the first expression.
+Variables that are declared at top level in a file can be exported. This enables other modules to import them. When a variable has been exported, subsequent updates won't affect the exported value. Re-exporting a variable is not recommended.
 
 {{{
     :greet {|person|
