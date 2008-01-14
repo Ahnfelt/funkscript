@@ -1,0 +1,20 @@
+#summary Double precision floating point numbers.
+
+= Methods =
+
+|| `ToString` || Returns a string representation of the number (for example `"42"` or `"3.7e12"`). ||
+|| `IsDefined` || Returns true if the number isn't `NaN` (not a number). ||
+|| `IsPositiveInfinity` || Returns true if the number is positive infinity. ||
+|| `IsNegativeInfinity` || Returns true if the number is negative infinity. ||
+|| `Negate` || Returns the same number, except the sign is reversed. ||
+|| `Floor` || Returns the nearest whole number less than or equal to this number. ||
+|| `Ceil` || Returns the nearest whole number greater than or equal to this number. ||
+|| `Round` || Returns the nearest whole number (default rounding mode). ||
+|| `Min other` || Returns the least of this and the `other` number. ||
+|| `Max other` || Returns the greatest of this and the `other` number. ||
+|| `To n` || Returns a list containing a sequence of numbers from this number up to `n` inclusive (step 1). ||
+|| `ToStep n s` || Returns a list containing a sequence of numbers from this number up to `n` inclusive (step `s`). ||
+|| `Until n` || Returns a list containing a sequence of numbers from this number up to `n` exclusive (step 1). ||
+|| `UntilStep n s` || Returns a list containing a sequence of numbers from this number up to `n` exclusive (step `s`). ||
+
+|| `Equal other` || Returns true if the `other` number represents the same floating point number. ||
