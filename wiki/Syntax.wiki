@@ -179,7 +179,7 @@ Operators are syntactic sugar for method calls. The following table lists the op
 
 || 1 || `a b` || || `a b` ||
 || 2 || `a && b` || || `a And {b}` ||
-|| 2 || `a || b` || || `a Or {b}` ||
+|| 2 || _see bottom_ ||  || `a Or {b}` ||
 || 3 || `a = b` || `a == b` || `a Equal b` ||
 || 3 || `a <> b` || `a != b` || `a Equal b Not` ||
 || 3 || `a < b` || || `a Less b` ||
@@ -193,3 +193,5 @@ Operators are syntactic sugar for method calls. The following table lists the op
 || 6 || `a ^ b` || || `a Power b` ||
 || 7 || `~a` || || `a Negate` ||
 || 8 || `a . b` || a(b) || `a b` ||
+
+The `Or` operator is the double vertical bar `||`, but cannot appear within a table in this Wiki.
