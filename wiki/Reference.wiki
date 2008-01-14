@@ -1,4 +1,5 @@
 #summary This is the main index of the language and standard library documentation.
+#labels Featured
 
 Check out the [Syntax] of *Funk* first.
 
