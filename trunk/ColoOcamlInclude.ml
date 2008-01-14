@@ -61,7 +61,6 @@ let rec a l r = match l with
         | VString "Exists" -> VFunction (fun (VFunction t) -> 
             let f e = t e = VBool true in VBool (List.exists f s))
         | VString "Equal" -> VFunction (fun v -> VBool (l = v))
-        | VString "NotEqual" -> VFunction (fun v -> VBool (l <> v))
         | _ -> raise (E (VString ("List cannot be applied to: " ^ value_to_string r)))
         )
     | VString s -> (match r with
@@ -93,7 +92,6 @@ let rec a l r = match l with
         | VString "LessEqual" -> VFunction (fun (VString t) -> VBool (UTF8.compare s t <= 0))
         | VString "LessGreater" -> VFunction (fun (VString t) -> VBool (UTF8.compare s t >= 0))
         | VString "Equal" -> VFunction (fun (VString t) -> VBool (UTF8.compare s t = 0))
-        | VString "NotEqual" -> VFunction (fun (VString t) -> VBool (UTF8.compare s t <> 0))
         | _ -> raise (E (VString ("String cannot be applied to: " ^ value_to_string r)))
         )
     | VNumber n -> (match r with
@@ -124,7 +122,6 @@ let rec a l r = match l with
         | VString "LessEqual" -> VFunction (fun (VNumber t) -> VBool (n <= t))
         | VString "LessGreater" -> VFunction (fun (VNumber t) -> VBool (n >= t))
         | VString "Equal" -> VFunction (fun v -> VBool (l = v))
-        | VString "NotEqual" -> VFunction (fun v -> VBool (l <> v))
         | _ -> raise (E (VString ("Number cannot be applied to: " ^ value_to_string r)))
         )
     | VBool b -> (match r with
@@ -140,14 +137,12 @@ let rec a l r = match l with
         | VString "Else" -> VFunction (fun f -> if b then VUnit else a f VUnit)
         | VString "ThenElse" -> VFunction (fun f1 -> VFunction (fun f2 -> if b then a f1 VUnit else a f2 VUnit))
         | VString "Equal" -> VFunction (fun v -> VBool (l = v))
-        | VString "NotEqual" -> VFunction (fun v -> VBool (l <> v))
         | _ -> raise (E (VString ("Bool cannot be applied to: " ^ value_to_string r)))
         )
     | VUnit -> (match r with
         | VString "Print" -> print_string "()"; print_newline (); VUnit
         | VString "ToString" -> VString "()"
         | VString "Equal" -> VFunction (fun v -> VBool (v = VUnit))
-        | VString "NotEqual" -> VFunction (fun v -> VBool (v <> VUnit))
         | _ -> raise (E (VString ("Unit cannot be applied to: " ^ value_to_string r)))
         )
     ;;
