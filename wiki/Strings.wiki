@@ -1,4 +1,4 @@
-#summary Unicode text strings.
+#summary Immutable Unicode text strings.
 
 = Methods =
 
