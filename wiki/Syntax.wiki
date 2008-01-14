@@ -6,7 +6,7 @@ Comments start with a hash `#` and lasts to the end of the line. They are ignore
 
 = Union =
 
-The union value corresponds roughly to _null_ or _nil_ in other languages. It is useful if you have no other meaningful value to return (when your functions only purpose is to perform a side effect).
+The union value corresponds roughly to _null_ or _nil_ in other languages. It is useful if you have no other meaningful value to return (when your function's only purpose is to perform a side effect).
 
 {{{
 ()          # The union value
