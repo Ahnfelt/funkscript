@@ -14,13 +14,14 @@
 
 :print {_ ToString Print}
 :s 'This is ''some kind'' of test'
+print s.Between(10, 15).Uppercase
+print 'Hello, '..s
+
 :fib {
     |0| 1
     |1| 1
     |n| fib(n - 1) + fib(n - 2)
 }
-print s.Between(10, 15).Uppercase
-print 'Hello, '..s
 :l [7, 3, 5, 9, 8, 1, 2] Map {fib _} Sort {|a b| a < b}
 print l
 print (l FoldLeft 0 {|sum e| sum + e})
@@ -38,12 +39,11 @@ print p1 + p2
 print ~p2
 
 :while {|c a|
-    :loop {|i| (c i) Then {a i; loop (i + 1)}}
+    :loop {|i| (c i) Then {a i; loop i + 1}}
     loop 0
 }
 
 while {_ < 3} {
     print "Iteration ".._
 }
-
 
