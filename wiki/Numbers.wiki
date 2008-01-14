@@ -16,5 +16,14 @@
 || `ToStep n s` || Returns a list containing a sequence of numbers from this number up to `n` inclusive (step `s`). ||
 || `Until n` || Returns a list containing a sequence of numbers from this number up to `n` exclusive (step 1). ||
 || `UntilStep n s` || Returns a list containing a sequence of numbers from this number up to `n` exclusive (step `s`). ||
-
-|| `Equal other` || Returns true if the `other` number represents the same floating point number. ||
+|| `Mod n` || Returns the remainder of this number divided by n. ||
+|| `Add n` || Returns this number plus `n`. ||
+|| `Subtract n` || Returns this number minus `n`. ||
+|| `Multiply n` || Returns this number times `n`. ||
+|| `Divide n` || Returns this number divided by `n`. ||
+|| `Power n` || Returns this number raised to the power of `n`. ||
+|| `Power n` || Returns this number raised to the power of `n`. ||
+|| `Less other` || Returns true if this number is less than the `other` number. ||
+|| `Greater other` || Returns true if this number is greater than the `other` number. ||
+|| `LessEqual other` || Returns true if this number is less than or equal to the `other` number. ||
+|| `GreaterEqual other` || Returns true if this number is greater than or equal to the `other` number. ||
