@@ -200,7 +200,7 @@ The `Or` operator is the double vertical bar `||`, but cannot appear within a ta
 
 = Modules =
 
-Each file is a module with the same name as the file. The filename must match the pattern `[A-Z][a-zA-Z0-9][.]funk`.
+Each file is a module with the same name as the file. The filename must match the pattern `[A-Z][a-zA-Z0-9][.]funk`. A file contains a sequence of expressions (or a single expression).
 
 == Importing ==
 
@@ -217,8 +217,8 @@ Variables that have been exported from other modules can be used by qualifying t
 Variables that are declared at top level in a file can be exported. This enables other modules to import them. The export clause must appear before the first expression.
 
 {{{
-    ::(greet)                  # Export the greet variable
     :greet {|person|
         print "Hello, "..person
     }
+    ::(greet)                  # Export the greet variable
 }}}
