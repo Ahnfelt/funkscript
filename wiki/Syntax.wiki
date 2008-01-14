@@ -197,3 +197,28 @@ Operators are syntactic sugar for method calls. The following table lists the op
 || 9 || `a . b` || a(b) || `a b` (call `a` with the argument `b`) ||
 
 The `Or` operator is the double vertical bar `||`, but cannot appear within a table in this Wiki.
+
+= Modules =
+
+Each file is a module with the same name as the file. The filename must match the pattern `[A-Z][a-zA-Z0-9][.]funk`.
+
+== Importing ==
+
+Variables that have been exported from other modules can be used by qualifying the variable with the module name. You can also import it into your own namespace, which makes it possible to use the imported variables without qualification.
+
+{{{
+    print Math:sin(Math:pi)    # Use with qualification
+    Math:(sin, pi)             # Import sin and pi from the Math module
+    print sin(pi)              # Use without qualification
+}}}
+
+== Exporting ==
+
+Variables that are declared at top level in a file can be exported. This enables other modules to import them. The export clause must appear before the first expression.
+
+{{{
+    ::(greet)                  # Export the greet variable
+    :greet {|person|
+        print "Hello, "..person
+    }
+}}}
