@@ -214,7 +214,7 @@ Variables that have been exported from other modules can be used by qualifying t
 
 == Exporting ==
 
-Variables that are declared at top level in a file can be exported. This enables other modules to import them. When a variable has been exported, subsequent updates won't affect the exported value. Re-exporting a variable is not recommended.
+Variables that are declared at top level in a file can be exported. This enables other modules to import them. When a variable has been exported, subsequent updates won't affect the exported value. Re-exporting a variable is not recommended (and the effect remains undocumented).
 
 {{{
     :greet {|person|
