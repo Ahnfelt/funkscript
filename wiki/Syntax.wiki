@@ -178,8 +178,8 @@ Operators are syntactic sugar for method calls. The following table lists the op
 
 || || `(a)` || || `a` ||
 || 1 || `a b` || || `a b` (call `a` with the argument `b`) ||
-|| 2 || `a && b` || || `a And {b}` ||
-|| 2 || _see bottom_ ||  || `a Or {b}` ||
+|| 2 || `a && b` || || `a AndThen {b}` ||
+|| 2 || _see bottom_ ||  || `a OrElse {b}` ||
 || 3 || `a = b` || `a == b` || `a Equal b` ||
 || 3 || `a <> b` || `a != b` || `a Equal b Not` ||
 || 3 || `a < b` || || `a Less b` ||
