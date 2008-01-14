@@ -56,7 +56,7 @@ Regular expressions (actually a superset) start and end with a ` (backquote). Th
 
 = Lists =
 
-List literals start with `[` and ends with `]`. Within them are expressions separated by commas, and an optional comma at the end. Automatic semicolons are suppressed if the list parenthesis are the innermost when breaking a line.
+List literals start with `[` and ends with `]`. Within them are expressions separated by commas, and an optional comma at the end. 
 
 {{{
 []             # The empty list
