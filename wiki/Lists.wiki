@@ -1,5 +1,4 @@
 #summary An immutable list is a collection of elements where each element has an index.
-#labels Featured
 
 = Methods =
 
