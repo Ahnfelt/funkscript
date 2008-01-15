@@ -208,17 +208,17 @@ Variables that have been exported from other modules can be used by qualifying t
 
 {{{
 print Math:sin(Math:pi)    # Use with qualification
-Math:(sin, pi)             # Import sin and pi from the Math module
+Math:{sin, pi}             # Import sin and pi from the Math module
 print sin(pi)              # Use without qualification
 }}}
 
 == Exporting ==
 
-Variables that are declared at top level in a file can be exported. This enables other modules to import them. When a variable has been exported, subsequent updates won't affect the exported value. Re-exporting a variable is not recommended (and the effect remains undocumented).
+Exporting variables enables other modules to import them. When a variable has been exported, subsequent updates won't affect the exported value. Re-exporting a variable is not recommended (and the effect remains undocumented).
 
 {{{
 :greet {|person|
     print "Hello, "..person
 }
-::(greet)                  # Export the greet variable
+::{greet}                  # Export the greet variable
 }}}
