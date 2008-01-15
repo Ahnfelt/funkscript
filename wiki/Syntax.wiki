@@ -43,7 +43,7 @@ MyFunString    # The last string: MyFunString
 
 = !RegExes =
 
-Regular expressions (actually a superset) start and end with a ` (backquote). The syntax of regular expressions inside have not been decided yet, but I'll look at Perl when designing them. Suggestions are welcomed.
+Regular expressions (actually a superset) start and end with a ` (back quote). If options are required they can be put in back quotes immediately after (no spaces in between). The syntax of regular expressions inside have not been decided yet, but I'll look at Perl when designing them. Suggestions are welcomed.
 
 {{{
 `[a-zA-Z]+`  # Matches any sequence of English letters.
