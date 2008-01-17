@@ -11,7 +11,7 @@ Check out the [Syntax] of *Funk* first.
  * [Strings] - text strings (Unicode)
  * [RegExes] - regular expressions (actually a superset)
  * [Lists] - indexed containers (an immutable array)
- * [Dictionaries] - associative containers (also called a map)
+ * [Dictionaries] - associative containers (also known as maps)
 
 = Standard library modules =
 
