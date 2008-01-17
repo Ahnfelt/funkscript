@@ -98,6 +98,17 @@ Functions are enclosed in `{ }` (curly braces). A function contains any number o
 {:@ @}           # The function that returns itself when called.
 }}}
 
+Using multiple pattern/expression pairs you can define an object constructor:
+
+{{{
+:point {|x y| {:@
+    |X| x
+    |Y| y
+    |Add p| point(x + p.X, y + p.Y)
+    |ToString| "("..x..", "..y..")"
+}}
+}}}
+
 = Variables =
 
 Variables are mutable (non-constant) and are named by an identifier matching `[a-z][a-zA-Z0-9]*`. They have lexical scoping and you can modify a variable from an outer scope within an inner scope.
