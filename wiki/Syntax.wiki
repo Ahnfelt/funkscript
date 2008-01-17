@@ -101,7 +101,7 @@ Functions are enclosed in `{ }` (curly braces). A function contains any number o
 Using multiple pattern/expression pairs you can define an object constructor:
 
 {{{
-:point {|x y| {:@
+:point {|x y| {
     |X| x
     |Y| y
     |Add p| point(x + p.X, y + p.Y)
