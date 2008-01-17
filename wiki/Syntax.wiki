@@ -220,5 +220,5 @@ Exporting variables enables other modules to import them. When a variable has be
 :greet {|person|
     print "Hello, "..person
 }
-::{greet}                  # Export the greet variable
+:{greet}                  # Export the greet variable
 }}}
