@@ -236,3 +236,9 @@ Exporting values enables other modules to import them. You can reexport values, 
 }
 export MyModule [|Greet| greet]    # Export the greet value as MyModule:Greet
 }}}
+
+You can freeze a module after exporting to it, to prevent future scripts from changing the module. Once a module is frozen, it can never be modified or unfrozen.
+
+{{{
+freeze MyModule                    # Disallow any future changes to this module
+}}}
