@@ -183,6 +183,8 @@ l     # And l is the result of the sequence.
 
 Note that with automatic semicolons, any expression that spans multiple lines should only break a line within some kind of brackets, such as `( )`, `[ ]` or `{ }`.
 
+A Funk source file is simply a sequence of expressions.
+
 = Operators =
 
 Operators are syntactic sugar for method calls. The following table lists the operators and the method calls they correspond to. Operators with higher precedence are towards the bottom of the table. All of them associate to the left, except precedences 3, 7 and 8, which or are non-associative.
