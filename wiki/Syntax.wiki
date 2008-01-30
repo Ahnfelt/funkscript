@@ -211,25 +211,26 @@ The `Or` operator is the double vertical bar `||`, but cannot appear within a ta
 
 = Modules =
 
-Each file is a module with the same name as the file. The filename must match the pattern `[A-Z][a-zA-Z0-9][.]funk`. A file contains a sequence of expressions (or a single expression).
+Modules are named collections of values. They are exported using the `export` function and imported using the `import` function (or the equivalent syntactic sugar).
 
 == Importing ==
 
 Variables that have been exported from other modules can be used by qualifying the variable with the module name. You can also import it into your own namespace, which makes it possible to use the imported variables without qualification.
 
 {{{
-print Math:sin(Math:pi)    # Use with qualification
-Math:{sin, pi}             # Import sin and pi from the Math module
-print sin(pi)              # Use without qualification
+print Math:sin(Math:pi)            # Use with qualification (and syntactic sugar)
+:[sin, pi] import Math [Sin, Pi]   # Import sin and pi from the Math module
+Math:{sin, pi}                     # Same thing, but using syntactic sugar
+print sin(pi)                      # Use without qualification
 }}}
 
 == Exporting ==
 
-Exporting variables enables other modules to import them. When a variable has been exported, subsequent updates won't affect the exported value. Re-exporting a variable is not recommended (and the effect remains undocumented).
+Exporting values enables other modules to import them. You can reexport values, but the importing modules will need to import the values after the reexport to discover the new value.
 
 {{{
 :greet {|person|
     print "Hello, "..person
 }
-:{greet}                  # Export the greet variable
+export MyModule [|Greet| greet]    # Export the greet value as MyModule:Greet
 }}}
