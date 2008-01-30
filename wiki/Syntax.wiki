@@ -222,7 +222,7 @@ Variables that have been exported from other modules can be used by qualifying t
 {{{
 print Math:sin(Math:pi)            # Use with qualification (and syntactic sugar)
 :[sin, pi] import Math [Sin, Pi]   # Import sin and pi from the Math module
-Math:{sin, pi}                     # Same thing, but using syntactic sugar
+Math:[sin, pi]                     # Same thing, but using syntactic sugar
 print sin(pi)                      # Use without qualification
 }}}
 
