@@ -74,6 +74,16 @@ Associative container literals start with `[` and `]` like lists, but the keys a
 [|X| 15 |Y| 26]  # The dictionary where "X" maps to 15 and "Y" maps to 26.
 }}}
 
+= Conditionals =
+
+Conditionals are a way to perform decisions. It is a list of pairs of conditions and expressions, optionally followed by an expression to evaluate in case none of the conditions are true. The conditions are tried in order, until one of them evaluates to true, and then the corresponding expression is evaluated and returned. 
+
+{{{
+(|x < 0| -x |x > 0| x | 0)
+}}}
+
+The above example reads "if `x < 0` then return `-x`, or if `x > 0` then return `x`, otherwise return `0`.
+
 = Patterns =
 
 A pattern matches a set of values. All the literals discussed above can be matched using the same syntax as is used to construct them. The pattern that matches anything is written `_`. If the value is needed within the expression, an variable pattern can be used, which consists of a variable identifier. It matches any value and binds that value to the corresponding value. There is a special pattern for matching variable-length lists which is a list pattern followed by the concatenation operator `&` and a pattern that matches the rest of the list.
