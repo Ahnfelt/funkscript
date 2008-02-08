@@ -82,7 +82,7 @@ Conditionals are a way to perform decisions. It is a list of pairs of conditions
 (|x < 0| -x |x > 0| x | 0)
 }}}
 
-The above example reads "if `x < 0` then return `-x`, or if `x > 0` then return `x`, otherwise return `0`.
+The above example reads "if `x < 0` then return `-x`, or if `x > 0` then return `x`, otherwise return `0`. If there had been no default expression (the last one), it would return `()` when `x` is zero.
 
 = Patterns =
 
