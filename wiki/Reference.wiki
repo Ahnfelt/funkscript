@@ -1,6 +1,8 @@
 #summary This is the main index of the language and standard library documentation.
 #labels Featured
 
+= Syntax =
+
 Check out the [Syntax] of *Funk* first.
 
 = Methods of built-in types =
