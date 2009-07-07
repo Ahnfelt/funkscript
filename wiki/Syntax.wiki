@@ -1,5 +1,9 @@
 #summary Describes the syntax of Funk.
 
+= Note =
+
+I am currently working on a new version of funk whose syntax is somewhat simplified (no 1? and 0?, no strange conditional syntax, no more optional . or special parenthesis rules for calls). There are more small changes, and the new version will also have types and a syntax for (optionally) specifying these.
+
 = Comments =
 
 Comments start with a hash `#` and lasts to the end of the line. They are ignored by the compiler.
